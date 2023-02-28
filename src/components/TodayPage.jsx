@@ -1,4 +1,8 @@
 import React from "react";
+import topsImg from "../img/tops.png";
+import bottomsImg from "../img/bottoms.png";
+import shoesImg from "../img/shoes.png";
+import { Weather } from "./Weather";
 
 export const TodayPage = () => {
     const today = new Date();
@@ -13,7 +17,12 @@ export const TodayPage = () => {
         {/*日付*/}
         <div>{month}月{date}日（{dayname[day]}）</div>
         {/*天気、気温　※APIで現在地の天気を取得*/}
-        
+        <Weather />
+        <div class="flex flex-col">
+            <img src={topsImg} alt="topsImage"/>
+            <img src={bottomsImg} alt="bottomsImage"/>
+            <img src={shoesImg} alt="shoesImage"/>
+        </div>
         </>
     );
 };
