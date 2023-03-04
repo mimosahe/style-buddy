@@ -1,6 +1,7 @@
 import React from "react";
 import { CardList } from "./CardList";
 import { CircleList } from "./CircleList";
+import { Footer } from "./Footer";
 
 export const ItemlistPage = () => {
 
@@ -8,7 +9,6 @@ export const ItemlistPage = () => {
         <>
         <h1>アイテム一覧画面</h1>
         <div className="App container mx-auto">
-            <h1>カテゴリを選ぶ場所</h1>
             <div className="mt-6">
                 <CircleList />
             </div>
@@ -19,6 +19,7 @@ export const ItemlistPage = () => {
                 <CardList />
             </div>
         </div>
+        <Footer />
         </>
     );
 };

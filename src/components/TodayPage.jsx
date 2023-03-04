@@ -3,6 +3,7 @@ import topsImg from "../img/tops.png";
 import bottomsImg from "../img/bottoms.png";
 import shoesImg from "../img/shoes.png";
 import { Weather } from "./Weather";
+import { Footer } from "./Footer";
 
 export const TodayPage = () => {
     const today = new Date();
@@ -19,10 +20,17 @@ export const TodayPage = () => {
         {/*天気、気温　※APIで現在地の天気を取得*/}
         <Weather />
         <div class="flex flex-col">
-            <img src={topsImg} alt="topsImage"/>
-            <img src={bottomsImg} alt="bottomsImage"/>
-            <img src={shoesImg} alt="shoesImage"/>
+            <div class="w-1/3">
+                <img src={topsImg} alt="topsImage"/>
+            </div>
+            <div class="w-1/3">
+                <img src={bottomsImg} alt="bottomsImage"/>
+            </div>
+            <div class="w-1/3">
+                <img src={shoesImg} alt="shoesImage"/>
+            </div>
         </div>
+        <Footer />
         </>
     );
 };

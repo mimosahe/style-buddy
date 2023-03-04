@@ -1,7 +1,8 @@
 import React from "react";
 import { CardList } from "./CardList";
+import { Footer } from "./Footer";
 
-export const OutfitListPage = () => {
+export const OutfitlistPage = () => {
 
     return (
         <>
@@ -12,6 +13,7 @@ export const OutfitListPage = () => {
                 <CardList />
             </div>
         </div>
+        <Footer />
         </>
     );
 };
