@@ -1,5 +1,5 @@
 import React from "react";
-import { CardList } from "./CardList";
+import { ItemCardList } from "./ItemCardList";
 import { Footer } from "./Footer";
 
 export const OutfitlistPage = () => {
@@ -10,7 +10,7 @@ export const OutfitlistPage = () => {
         <div className="App container mx-auto">
             <h1>組合せ一覧</h1>
             <div className="mt-6">
-                <CardList />
+                <ItemCardList />
             </div>
         </div>
         <Footer />

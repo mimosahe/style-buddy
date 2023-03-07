@@ -3,7 +3,6 @@ import topsImg from "../img/tops.png";
 import bottomsImg from "../img/bottoms.png";
 import shoesImg from "../img/shoes.png";
 import { Weather } from "./Weather";
-import { Footer } from "./Footer";
 
 export const TodayPage = () => {
     const today = new Date();
@@ -30,7 +29,6 @@ export const TodayPage = () => {
                 <img src={shoesImg} alt="shoesImage"/>
             </div>
         </div>
-        <Footer />
         </>
     );
 };

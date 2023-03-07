@@ -1,25 +1,29 @@
 import React from "react";
-import { CardList } from "./CardList";
-import { CircleList } from "./CircleList";
-import { Footer } from "./Footer";
+import { useLocation, useNavigate } from "react-router-dom";
 
-export const ItemlistPage = () => {
+import { ItemCardList } from "./ItemCardList";
+import { CategoryButtonList } from "./CategoryButtonList";
+
+export const ItemlistPage = (props) => {
+    const { state } = useLocation();
+    const navigate = useNavigate();
+    const onClickBack = () => navigate(-1);
 
     return (
         <>
         <h1>アイテム一覧画面</h1>
+        <button onClick={onClickBack}>戻る</button>
         <div className="App container mx-auto">
             <div className="mt-6">
-                <CircleList />
+                <CategoryButtonList />
             </div>
         </div>
         <div className="App container mx-auto">
-            <h1>カテゴリ名</h1>
+            <h1>トップス</h1>
             <div className="mt-6">
-                <CardList />
+                <ItemCardList />
             </div>
         </div>
-        <Footer />
         </>
     );
 };

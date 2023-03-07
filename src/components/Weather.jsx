@@ -21,6 +21,7 @@ export const Weather = () => {
             return component.types.indexOf("locality") > -1;
           }); // 市区町村は"locality"
           setCityName(results[0].long_name);
+          console.log(results[0]);
         })
         .catch((error) => {
           alert(error);
