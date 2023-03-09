@@ -15,7 +15,7 @@ export const Weather = () => {
 
       // 緯度経度が取得できた場合は、市区町村名を取得（GoogleMap: Geocoding API）
       axios
-        .get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lon + "&key=AIzaSyDoIdJvQtpmpwGdTvGH-p_eUSEbVEsWTro")
+        .get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lon + "&key=xxxxxxxxxx")
         .then((response) => {
           let results = response.data.results[0].address_components.filter(function (component) {
             return component.types.indexOf("locality") > -1;
@@ -28,7 +28,7 @@ export const Weather = () => {
 
       // 緯度経度が取得できた場合は、本日の天気情報を取得（OpenWeather API）
       axios
-        .get("http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=42124b3bc9e2617b577ee2088659e8fd")
+        .get("http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=xxxxxxxxxx")
         .then((response) => {
           let description = response.data.weather[0].description;
           let iconImage = response.data.weather[0].icon + "@2x.png";
