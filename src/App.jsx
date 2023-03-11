@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { AdditemsImagePage } from "./components/AdditemsImagePage";
 
-import { AdditemsPage } from "./components/AdditemsPage";
 import { Footer } from "./components/Footer";
 import { ItemlistPage } from "./components/ItemlistPage";
 import { NomatchPage } from "./components/NomatchPage";
@@ -15,7 +15,7 @@ export const App = () => {
         <Route path="/" element={<TodayPage />} />
         {/* <Route path="/Itemlist" element={<ItemlistPage category1Name="トップス"/>} /> */}
         <Route path="/Itemlist" element={<ItemlistPage />} />
-        <Route path="/Additems" element={<AdditemsPage />} />
+        <Route path="/Additems" element={<AdditemsImagePage />} />
         <Route path="*" element={<NomatchPage />} />
       </Routes>
       <Footer />
