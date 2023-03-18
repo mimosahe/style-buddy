@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { ItemCardList } from "./ItemCardList";
 import { CategoryButtonList } from "./CategoryButtonList";
+import { Item } from "./Item";
 
 export const ItemlistPage = (props) => {
     const { state } = useLocation();
@@ -19,11 +20,15 @@ export const ItemlistPage = (props) => {
             </div>
         </div>
         <div className="App container mx-auto">
-            <h1>トップス</h1>
             <div className="mt-6">
                 <ItemCardList />
             </div>
         </div>
+        {/* <div className="App container mx-auto">
+            <div className="mt-6">
+                <Item />
+            </div>
+        </div> */}
         </>
     );
 };

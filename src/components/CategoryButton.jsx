@@ -5,7 +5,7 @@ export const CategoryButton = (props) => {
     const [category1Name, setCategory1Name] = useState("初期値です");
     const onClickCategoryButton = () => {
         setCategory1Name(props.category1Name)
-        alert(props.category1Name)
+        // alert(props.category1Name)
     };
     
     return (

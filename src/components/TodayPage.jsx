@@ -13,7 +13,7 @@ export const TodayPage = () => {
 
     return (
         <>
-        <h1>Today画面</h1>
+        <h1>トゥデイ画面</h1>
         {/*日付*/}
         <div>{month}月{date}日（{dayname[day]}）</div>
         {/*天気、気温　※APIで現在地の天気を取得*/}
