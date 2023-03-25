@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { collection } from "firebase/firestore";
+import { getStorage, ref, uploadBytesResumable, uploadBytes, getDownloadURL } from "firebase/storage";
+import { collection, addDoc, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 
 export const AdditemsImagePage = () => {
     const [file, setFile] = useState();
@@ -23,9 +24,10 @@ export const AdditemsImagePage = () => {
         setFile(event.target.files[0]);
     }
 
-    const uploadFileToFirebase = () => {
+    const uploadFileToFirebase = (tags) => {
         if (!file) {
             alert('Please upload an image first!');
+            return;
         }
         const storage = getStorage();
         const storageRef = ref(storage, "image/" + file.name);
@@ -46,23 +48,21 @@ export const AdditemsImagePage = () => {
             setTimeout(() => setUploaded(false), 3000);
             getDownloadURL(uploadImage.snapshot.ref).then((downloadURL) => {
               console.log('File available at', downloadURL);
+              tags.url = downloadURL;
+              uploadDataToFirestore(tags);
             });
         }
         );
     };
 
     // ここから工事
-    const uploadDataToFirestore = () => {
-        const firestore = getFirestore();
-        const docRef = collection(firestore, "items");
-        const storageRef = ref(storage, "image/" + file.name);
-
-        uploadBytes(storageRef, image).then(() => {
-            getDownloadURL(storageRef).then(url) => {
-              console.log(url);
-            };
-          });
-        };
+    async function uploadDataToFirestore(tags) {
+        try {
+          const docRef = await addDoc(collection(db, "items"), tags);
+          console.log('Document written with ID: ', docRef.id);
+        } catch (e) {
+          console.log(e);
+        }
     };
     // ここまで
 
@@ -71,10 +71,24 @@ export const AdditemsImagePage = () => {
         event.preventDefault();
         const { category1, category2, color, season } = event.target.elements;
         console.log(category1.value,category2.value, color.value, season.value)
-        
-        uploadDataToFirestore();
-        uploadFileToFirebase(); 
-      };
+
+        const tags = {
+            category1: category1.value,
+            category2: category2.value,
+            color: color.value,
+            season: season.value,
+        };
+        uploadFileToFirebase(tags);
+    };
+
+    // get a list of data
+    async function getAll() {
+      const querySnapshot = await getDocs(collection(db, "items"));
+      querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+      });
+    }
+    getAll();
 
     return (
         <>
@@ -126,7 +140,13 @@ export const AdditemsImagePage = () => {
                 </div>
                 <div class="mb-8">
                     <label for="season" class="text-sm block">季節</label>
-                    <input type="text" id="season" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50" placeholder="例）春"/>
+                    <select id="season" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50">
+                      <option value=''></option>
+                      <option value="spring">春</option>
+                      <option value="summer">夏</option>
+                      <option value="autumn">秋</option>
+                      <option value="winter">冬</option>
+                    </select>
                 </div>
                 <button class="bg-gray-700 hover:bg-gray-600 text-white rounded px-4 py-2">登録</button>
             </form>
