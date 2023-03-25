@@ -1,5 +1,5 @@
 import '../index.css';
-import Modal from './ItemCardModal';
+import { Modal } from "./ItemCardModal";
 
 
 

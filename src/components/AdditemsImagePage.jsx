@@ -1,14 +1,33 @@
-import { useState } from "react";
-import storage from "../firebase";
-import { ref, uploadBytesResumable } from "firebase/storage";
+import { useState, useEffect } from "react";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { collection } from "firebase/firestore";
 
 export const AdditemsImagePage = () => {
+    const [file, setFile] = useState();
+    const [preview, setPreview] = useState();
     const [loading, setLoading] = useState(false);
     const [isUploaded, setUploaded] = useState(false);
 
-    const OnFileUploadToFirebase = (e) => {
-        console.log(e.target.files[0].name);
-        const file = e.target.files[0];
+    useEffect(() => {
+      if (!file) {
+        setPreview(undefined);
+        return;
+      }
+      const objectUrl = URL.createObjectURL(file);
+      setPreview(objectUrl);
+
+      return () => URL.revokeObjectURL(objectUrl);
+    }, [file]);
+
+    function handleSetFile(event) {
+        setFile(event.target.files[0]);
+    }
+
+    const uploadFileToFirebase = () => {
+        if (!file) {
+            alert('Please upload an image first!');
+        }
+        const storage = getStorage();
         const storageRef = ref(storage, "image/" + file.name);
 
         const uploadImage = uploadBytesResumable(storageRef, file);
@@ -22,17 +41,45 @@ export const AdditemsImagePage = () => {
         },
         () => {
             setLoading(false);
+            setFile(undefined);
             setUploaded(true);
+            setTimeout(() => setUploaded(false), 3000);
+            getDownloadURL(uploadImage.snapshot.ref).then((downloadURL) => {
+              console.log('File available at', downloadURL);
+            });
         }
         );
     };
 
     const handleSubmit = async (event) => {
+        // ここから工事
+        // const firestore = getFirestore();
+
+        // try {
+        //     const uid = item.user.uid;
+        //     const docRef = collection(firestore, "items");
+          
+        //     if (image) {
+        //       const imageRef = ref(firestorage, image.name);
+          
+        //       uploadBytes(imageRef, image).then(() => {
+        //         getDownloadURL(imageRef).then(url) => {
+        //           console.log(url);
+        //         };
+        //       });
+        //     }
+        //   } catch (err) {
+        //     console.log(err);
+        //     setError(true);
+        //   }
+        
+        // ここまで
         event.preventDefault();
         const { category1, category2, color, season } = event.target.elements;
         console.log(category1.value,category2.value, color.value, season.value)
+        uploadFileToFirebase(); 
       };
-    
+
     return (
         <>
         {loading ? (<h2>アップロード中・・・</h2>
@@ -43,6 +90,7 @@ export const AdditemsImagePage = () => {
             <h2>Additems</h2>
             <div class="flex justify-center mt-8">
                 <div class="max-w-2xl rounded-lg shadow-xl bg-gray-50">
+                {file ? <img src={preview} /> :
                     <div class="m-4">
                         <label class="inline-block mb-2 text-gray-500">File Upload</label>
                         <div class="flex items-center justify-center w-full">
@@ -57,15 +105,16 @@ export const AdditemsImagePage = () => {
                                     <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
                                         Attach a file</p>
                                 </div>
-                                <input type="file" class="opacity-0" accept=".png, .jpeg, .jpg" onChange={OnFileUploadToFirebase}/>
+                                <input type="file" class="opacity-0" accept=".png, .jpeg, .jpg" onChange={handleSetFile}/>
                             </label>
                         </div>
                     </div>
+                  }
                     <div class="flex justify-center p-2">
                         {/* <button class="w-full px-4 py-2 text-white bg-blue-500 rounded shadow-xl" type="file" accept=".png, .jpeg, .jpg" onChange={OnFileUploadToFirebase}>Create</button> */}
                     </div>
                 </div>
-            </div> 
+            </div>
             <form onSubmit={handleSubmit} class="w-10/12 mx-auto md:max-w-md">
                 <div class="mb-8">
                     <label for="category1" class="text-sm block">大カテゴリ</label>
@@ -90,6 +139,6 @@ export const AdditemsImagePage = () => {
           </>
         )}
         </>
-        
+
     );
 };
