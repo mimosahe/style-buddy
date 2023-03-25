@@ -141,6 +141,7 @@ export const AdditemsImagePage = () => {
                 <div class="mb-8">
                     <label for="season" class="text-sm block">季節</label>
                     <select id="season" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50">
+                      <option value=''></option>
                       <option value="spring">春</option>
                       <option value="summer">夏</option>
                       <option value="autumn">秋</option>
