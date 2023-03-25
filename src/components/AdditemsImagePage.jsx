@@ -140,7 +140,12 @@ export const AdditemsImagePage = () => {
                 </div>
                 <div class="mb-8">
                     <label for="season" class="text-sm block">季節</label>
-                    <input type="text" id="season" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50" placeholder="例）春"/>
+                    <select id="season" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50">
+                      <option value="spring">春</option>
+                      <option value="summer">夏</option>
+                      <option value="autumn">秋</option>
+                      <option value="winter">冬</option>
+                    </select>
                 </div>
                 <button class="bg-gray-700 hover:bg-gray-600 text-white rounded px-4 py-2">登録</button>
             </form>
