@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { collection } from "firebase/firestore";
+import { getStorage, ref, uploadBytesResumable, uploadBytes, getDownloadURL } from "firebase/storage";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 export const AdditemsImagePage = () => {
     const [file, setFile] = useState();
@@ -23,9 +24,10 @@ export const AdditemsImagePage = () => {
         setFile(event.target.files[0]);
     }
 
-    const uploadFileToFirebase = () => {
+    const uploadFileToFirebase = (tags) => {
         if (!file) {
             alert('Please upload an image first!');
+            return;
         }
         const storage = getStorage();
         const storageRef = ref(storage, "image/" + file.name);
@@ -46,23 +48,29 @@ export const AdditemsImagePage = () => {
             setTimeout(() => setUploaded(false), 3000);
             getDownloadURL(uploadImage.snapshot.ref).then((downloadURL) => {
               console.log('File available at', downloadURL);
+              tags.url = downloadURL;
+              uploadDataToFirestore(tags);
             });
         }
         );
     };
 
     // ここから工事
-    const uploadDataToFirestore = () => {
-        const firestore = getFirestore();
-        const docRef = collection(firestore, "items");
-        const storageRef = ref(storage, "image/" + file.name);
+    async function uploadDataToFirestore(tags) {
+        if (!file) {
+            alert('Please upload an image first!');
+            return;
+        }
+        console.log(tags);
 
-        uploadBytes(storageRef, image).then(() => {
-            getDownloadURL(storageRef).then(url) => {
-              console.log(url);
-            };
-          });
-        };
+        try {
+          const docRef = await addDoc(collection(db, "items"), tags);
+          console.log('Document written with ID: ', docRef.id);
+        } catch (e) {
+          console.log(e);
+        } finally {
+
+        }
     };
     // ここまで
 
@@ -71,10 +79,15 @@ export const AdditemsImagePage = () => {
         event.preventDefault();
         const { category1, category2, color, season } = event.target.elements;
         console.log(category1.value,category2.value, color.value, season.value)
-        
-        uploadDataToFirestore();
-        uploadFileToFirebase(); 
-      };
+
+        const tags = {
+            category1: category1.value,
+            category2: category2.value,
+            color: color.value,
+            season: season.value,
+        };
+        uploadFileToFirebase(tags);
+    };
 
     return (
         <>
