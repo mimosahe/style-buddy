@@ -51,32 +51,28 @@ export const AdditemsImagePage = () => {
         );
     };
 
-    const handleSubmit = async (event) => {
-        // ここから工事
-        // const firestore = getFirestore();
+    // ここから工事
+    const uploadDataToFirestore = () => {
+        const firestore = getFirestore();
+        const docRef = collection(firestore, "items");
+        const storageRef = ref(storage, "image/" + file.name);
 
-        // try {
-        //     const uid = item.user.uid;
-        //     const docRef = collection(firestore, "items");
-          
-        //     if (image) {
-        //       const imageRef = ref(firestorage, image.name);
-          
-        //       uploadBytes(imageRef, image).then(() => {
-        //         getDownloadURL(imageRef).then(url) => {
-        //           console.log(url);
-        //         };
-        //       });
-        //     }
-        //   } catch (err) {
-        //     console.log(err);
-        //     setError(true);
-        //   }
-        
-        // ここまで
+        uploadBytes(storageRef, image).then(() => {
+            getDownloadURL(storageRef).then(url) => {
+              console.log(url);
+            };
+          });
+        };
+    };
+    // ここまで
+
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const { category1, category2, color, season } = event.target.elements;
         console.log(category1.value,category2.value, color.value, season.value)
+        
+        uploadDataToFirestore();
         uploadFileToFirebase(); 
       };
 
