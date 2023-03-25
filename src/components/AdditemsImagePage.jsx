@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getStorage, ref, uploadBytesResumable, uploadBytes, getDownloadURL } from "firebase/storage";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 
 export const AdditemsImagePage = () => {
@@ -61,15 +61,12 @@ export const AdditemsImagePage = () => {
             alert('Please upload an image first!');
             return;
         }
-        console.log(tags);
 
         try {
           const docRef = await addDoc(collection(db, "items"), tags);
           console.log('Document written with ID: ', docRef.id);
         } catch (e) {
           console.log(e);
-        } finally {
-
         }
     };
     // ここまで
@@ -88,6 +85,14 @@ export const AdditemsImagePage = () => {
         };
         uploadFileToFirebase(tags);
     };
+
+    // get a list of data
+    async function getAll() {
+      const querySnapshot = await getDocs(collection(db, "items"));
+      querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+      });
+    }
 
     return (
         <>
