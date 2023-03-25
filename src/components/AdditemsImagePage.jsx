@@ -57,11 +57,6 @@ export const AdditemsImagePage = () => {
 
     // ここから工事
     async function uploadDataToFirestore(tags) {
-        if (!file) {
-            alert('Please upload an image first!');
-            return;
-        }
-
         try {
           const docRef = await addDoc(collection(db, "items"), tags);
           console.log('Document written with ID: ', docRef.id);
