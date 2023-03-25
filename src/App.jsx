@@ -29,9 +29,9 @@ export const App = () => {
   }, []);
   return (
     <div classname="App" class="md:h-full">
-      {items.map((item) => (
+      {/* {items.map((item) => (
         <div key={item.id}>{item.season}</div>
-      ))}
+      ))} */}
       <Routes>
         <Route path="/" element={<TodayPage />} />
         {/* <Route path="/Itemlist" element={<ItemlistPage category1Name="トップス"/>} /> */}

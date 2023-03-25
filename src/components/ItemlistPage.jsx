@@ -11,7 +11,6 @@ export const ItemlistPage = (props) => {
 
     return (
         <>
-        <h1>アイテム一覧画面</h1>
         <div class="md:h-full">
             <button onClick={onClickBack}>戻る</button>
             <div className="App container mx-auto">

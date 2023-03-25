@@ -19,7 +19,7 @@ export const Modal = (props) => {
           >
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="border-0 rounded-lg my-6 shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*body*/}
                 <div className="relative p-6 flex-auto m-3">
                   {/* <p className="my-4 text-slate-500 text-lg leading-relaxed">
@@ -27,7 +27,7 @@ export const Modal = (props) => {
                   </p>
                   <div class="m-3"> */}
                     <img
-                      src="https://source.unsplash.com/jvoZ-Aux9aw"
+                      src={props.img}
                       class="w-full aspect-square object-contain rounded-2xl"
                       alt="sample"
                     />

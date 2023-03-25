@@ -13,7 +13,7 @@ export const ItemCard = (props) => {
               class="w-full aspect-square object-cover rounded-2xl"
               alt="sample"
             />
-            <Modal />
+            <Modal img={props.img}/>
           </div>
         </a>
       </li> 
