@@ -85,9 +85,10 @@ export const AdditemsImagePage = () => {
     async function getAll() {
       const querySnapshot = await getDocs(collection(db, "items"));
       querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
+        console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
       });
     }
+    getAll();
 
     return (
         <>
