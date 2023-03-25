@@ -34,6 +34,15 @@ export default function Modal() {
                       <li className="my-4 text-slate-500 text-lg leading-relaxed">
                         大カテゴリ：{/* firebaseからデータを取得 */}
                       </li>
+                      <li className="my-4 text-slate-500 text-lg leading-relaxed">
+                        小カテゴリ：{/* firebaseからデータを取得 */}
+                      </li>
+                      <li className="my-4 text-slate-500 text-lg leading-relaxed">
+                        色・柄：{/* firebaseからデータを取得 */}
+                      </li>
+                      <li className="my-4 text-slate-500 text-lg leading-relaxed">
+                        季節：{/* firebaseからデータを取得 */}
+                      </li>
                     </ul>
                 </div>
                 {/*footer*/}
