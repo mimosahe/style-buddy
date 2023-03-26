@@ -28,11 +28,14 @@ export const Modal = (props) => {
                     ここにアイテム詳細（画像、属性データ）が表示される予定
                   </p>
                   <div class="m-3"> */}
+                  {/* 作業 */}
+                  <div className="w-full">
                     <img
                       src={url}
-                      class="w-full aspect-square object-contain rounded-2xl"
+                      className="w-3/4 m-0 mx-auto aspect-square object-contain rounded-2xl"
                       alt="sample"
                     />
+                  </div>
                     <ul>
                       <li className="my-4 text-slate-500 text-lg leading-relaxed">
                         大カテゴリ：{category1}

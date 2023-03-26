@@ -57,7 +57,6 @@ export const AdditemsImagePage = () => {
         );
     };
 
-    // ここから工事
     async function uploadDataToFirestore(tags) {
         try {
           const docRef = await addDoc(collection(db, "items"), tags);
@@ -66,9 +65,7 @@ export const AdditemsImagePage = () => {
           console.log(e);
         }
     };
-    // ここまで
-
-
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
         const { category1, category2, color, season } = event.target.elements;
@@ -90,7 +87,6 @@ export const AdditemsImagePage = () => {
           <>
           {isUploaded ? (<h2>アップロード完了しました！</h2>) : (
             <>
-            <h2>Additems</h2>
             <div class="flex justify-center mt-8">
                 <div class="max-w-2xl rounded-lg shadow-xl bg-gray-50">
                 {file ? <img src={preview} /> :
