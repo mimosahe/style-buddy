@@ -1,21 +1,18 @@
 import React from 'react';
+import { useLocation } from "react-router-dom";
 
 import '../index.css';
 
 export const CategoryButton = (props) => {
-    const onClickCategoryButton = () => {
-        // カテゴリボタンを押したら、該当カテゴリのデータのみItemCardListに表示する
-        
-        // カテゴリボタンを押したら、押したボタンに装飾つける
+    const search = useLocation().search;
+    const query = new URLSearchParams(search);
+    const category = query.get('category')
 
-    };
-    
     return (
-    <div class="m-0">
+    <div className={`${category === props.category1Id ? "selected" : "unselected"}`}>
         <a
-        className="w-20 h-20  bg-blue-400 text-lg text-white font-semibold rounded-full hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition"
         href={'/Itemlist?category=' + props.category1Id}
-        onClick={onClickCategoryButton}>
+        >
         {props.category1Name}
         </a>
     </div>

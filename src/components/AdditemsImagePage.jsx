@@ -11,6 +11,8 @@ export const AdditemsImagePage = () => {
     const [loading, setLoading] = useState(false);
     const [isUploaded, setUploaded] = useState(false);
 
+    const categoryNameList = categoryList.map(item => item.name);
+
     useEffect(() => {
       if (!file) {
         setPreview(undefined);
@@ -69,7 +71,7 @@ export const AdditemsImagePage = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const { category1, category2, color, season } = event.target.elements;
-        console.log(category1.value,category2.value, color.value, season.value)
+        // console.log(category1.value,category2.value, color.value, season.value)
 
         const tags = {
             category1: category1.value,
@@ -119,7 +121,7 @@ export const AdditemsImagePage = () => {
                     <label for="category1" class="text-sm block">大カテゴリ</label>
                     <select id="category1" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50">
                       <option value=''></option>
-                      {categoryList.map((category) =>
+                      {categoryNameList.map((category) =>
                         <option value={category}>{category}</option>
                       )}
                   </select>

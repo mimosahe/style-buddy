@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .selected {
+        @apply m-auto w-20 h-20  text-center flex items-center bg-blue-900 text-lg text-white font-semibold rounded-full border-blue-300 border-2 hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition;
+    }
+    .unselected {
+        @apply m-auto w-20 h-20  text-center flex items-center bg-blue-400 text-lg text-white font-semibold rounded-full hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition;
+    }
+}
