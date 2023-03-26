@@ -7,6 +7,7 @@ import { Footer } from "./components/Footer";
 import { ItemlistPage } from "./components/ItemlistPage";
 import { NomatchPage } from "./components/NomatchPage";
 import { TodayPage } from "./components/TodayPage";
+import { SignUp } from "./components/SignUp";
 import { db } from "./firebase";
 
 export const App = () => {
@@ -29,9 +30,7 @@ export const App = () => {
   }, []);
   return (
     <div classname="App" class="md:h-full">
-      {/* {items.map((item) => (
-        <div key={item.id}>{item.season}</div>
-      ))} */}
+      <SignUp />
       <Routes>
         <Route path="/" element={<TodayPage />} />
         {/* <Route path="/Itemlist" element={<ItemlistPage category1Name="トップス"/>} /> */}
