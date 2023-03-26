@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { getStorage, ref, uploadBytesResumable, uploadBytes, getDownloadURL } from "firebase/storage";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
+
+import { categoryList } from "./const";
 
 export const AdditemsImagePage = () => {
     const [file, setFile] = useState();
@@ -81,15 +83,6 @@ export const AdditemsImagePage = () => {
         uploadFileToFirebase(tags);
     };
 
-    // get a list of data
-    async function getAll() {
-      const querySnapshot = await getDocs(collection(db, "items"));
-      querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
-      });
-    }
-    getAll();
-
     return (
         <>
         {loading ? (<h2>アップロード中・・・</h2>
@@ -128,7 +121,12 @@ export const AdditemsImagePage = () => {
             <form onSubmit={handleSubmit} class="w-10/12 mx-auto md:max-w-md">
                 <div class="mb-8">
                     <label for="category1" class="text-sm block">大カテゴリ</label>
-                    <input type="text" id="category1" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50" placeholder="例）トップス"/>
+                    <select id="category1" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50">
+                      <option value=''></option>
+                      {categoryList.map((category) =>
+                        <option value={category}>{category}</option>
+                      )}
+                  </select>
                 </div>
                 <div class="mb-8">
                     <label for="category2" class="text-sm block">小カテゴリ</label>
@@ -142,10 +140,10 @@ export const AdditemsImagePage = () => {
                     <label for="season" class="text-sm block">季節</label>
                     <select id="season" class="w-full py-2 border-b focus:outline-none focus:border-b-2 focus:border-indigo-500 placeholder-gray-500 placeholder-opacity-50">
                       <option value=''></option>
-                      <option value="spring">春</option>
-                      <option value="summer">夏</option>
-                      <option value="autumn">秋</option>
-                      <option value="winter">冬</option>
+                      <option value='春'>春</option>
+                      <option value='夏'>夏</option>
+                      <option value='秋'>秋</option>
+                      <option value='冬'>冬</option>
                     </select>
                 </div>
                 <button class="bg-gray-700 hover:bg-gray-600 text-white rounded px-4 py-2">登録</button>

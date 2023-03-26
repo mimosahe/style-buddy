@@ -2,6 +2,8 @@ import React from "react";
 
 // export default function Modal() {
 export const Modal = (props) => {
+  const { item } = props;
+  const { category1, category2, color, season, url } = item;
   const [showModal, setShowModal] = React.useState(false);
   return (
     <>
@@ -27,22 +29,22 @@ export const Modal = (props) => {
                   </p>
                   <div class="m-3"> */}
                     <img
-                      src={props.img}
+                      src={url}
                       class="w-full aspect-square object-contain rounded-2xl"
                       alt="sample"
                     />
                     <ul>
                       <li className="my-4 text-slate-500 text-lg leading-relaxed">
-                        大カテゴリ：{/* firebaseからデータを取得 */}
+                        大カテゴリ：{category1}
                       </li>
                       <li className="my-4 text-slate-500 text-lg leading-relaxed">
-                        小カテゴリ：{/* firebaseからデータを取得 */}
+                        小カテゴリ：{category2}
                       </li>
                       <li className="my-4 text-slate-500 text-lg leading-relaxed">
-                        色・柄：{/* firebaseからデータを取得 */}
+                        色・柄：{color}
                       </li>
                       <li className="my-4 text-slate-500 text-lg leading-relaxed">
-                        季節：{/* firebaseからデータを取得 */}
+                        季節：{season}
                       </li>
                     </ul>
                 </div>
