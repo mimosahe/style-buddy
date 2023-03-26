@@ -81,15 +81,6 @@ export const AdditemsImagePage = () => {
         uploadFileToFirebase(tags);
     };
 
-    // get a list of data
-    async function getAll() {
-      const querySnapshot = await getDocs(collection(db, "items"));
-      querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
-      });
-    }
-    getAll();
-
     return (
         <>
         {loading ? (<h2>アップロード中・・・</h2>
