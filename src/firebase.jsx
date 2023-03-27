@@ -9,12 +9,12 @@ import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 export const firebaseConfig = {
-  apiKey: "AIzaSyCJ43zrPBZGzBNQpbVcsRuRZcg1zjyKgPI",
+  apiKey: "xxxxx",
   authDomain: "style-buddy-fb16a.firebaseapp.com",
   projectId: "style-buddy-fb16a",
   storageBucket: "style-buddy-fb16a.appspot.com",
-  messagingSenderId: "570996215154",
-  appId: "1:570996215154:web:2db3bf5ced12945d5861eb"
+  messagingSenderId: "xxxxx",
+  appId: "xxxxx"
 };
 
 // Initialize Firebase
