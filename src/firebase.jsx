@@ -8,7 +8,7 @@ import { getStorage } from "firebase/storage";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyCJ43zrPBZGzBNQpbVcsRuRZcg1zjyKgPI",
   authDomain: "style-buddy-fb16a.firebaseapp.com",
   projectId: "style-buddy-fb16a",
@@ -18,10 +18,9 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const firebaseApp = initializeApp({ /* config */ });
+export const firebaseApp = initializeApp({ /* config */ });
 export const auth = getAuth();
 onAuthStateChanged(auth, user => { console.log(user); });
 
 export const db = getFirestore();
 export const storage = getStorage();
-// export const fireauth = getAuth();
