@@ -9,15 +9,9 @@ import { NomatchPage } from "./components/NomatchPage";
 import { TodayPage } from "./components/TodayPage";
 import { SignUp } from "./components/SignUp";
 import { db } from "./firebase";
+import { Mypage } from "./components/MyPage";
 
 export const App = () => {
-  // const [items, setItems] = useState([]);
-  //   useEffect(() => {
-  //       const itemsCollectionRef = collection(db, 'items');
-  //       getDocs(itemsCollectionRef).then((querySnapshot) => {
-  //       querySnapshot.docs.forEach((doc) => console.log(doc));
-  //       });
-  //   }, []);
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -31,9 +25,9 @@ export const App = () => {
   return (
     <div classname="App" class="md:h-full">
       <SignUp />
+      <Mypage />
       <Routes>
         <Route path="/" element={<TodayPage />} />
-        {/* <Route path="/Itemlist" element={<ItemlistPage category1Name="トップス"/>} /> */}
         <Route path="/Itemlist" element={<ItemlistPage />} />
         <Route path="/Additems" element={<AdditemsImagePage />} />
         <Route path="*" element={<NomatchPage />} />
