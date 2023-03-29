@@ -3,6 +3,7 @@ import topsImg from "../img/tops.png";
 import bottomsImg from "../img/bottoms.png";
 import shoesImg from "../img/shoes.png";
 import { Weather } from "./Weather";
+import { Footer } from "./Footer";
 import { useNavigate } from "react-router-dom";
 
 export const TodayPage = () => {
@@ -22,7 +23,7 @@ export const TodayPage = () => {
             {/* <Weather /> */}
             <div class="flex flex-col">
                 <div class="w-1/3 rounded border border-slate-500 p-3 border-dotted flex justify-center items-center hover:translate-y-0.5 transform transition"
-                onClick={() => navigate('/Itemlist')}>
+                onClick={() => navigate('/itemlist')}>
                     <img src={topsImg} alt="topsImage"/>
                 </div>
                 <div class="w-1/3 rounded border border-slate-500 p-3 border-dotted flex justify-center items-center">
@@ -33,6 +34,7 @@ export const TodayPage = () => {
                 </div>
             </div>
         </div>
+        <Footer />
         </>
     );
 };

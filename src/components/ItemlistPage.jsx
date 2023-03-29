@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 
 import { ItemCardList } from "./ItemCardList";
 import { CategoryButtonList } from "./CategoryButtonList";
-// import { categoryList } from "./const.jsx";
+import { Footer } from "./Footer";
+import { onAuthStateChanged } from "firebase/auth";
 
 export const ItemlistPage = (props) => {
-    // const { state } = useLocation();
+    const [user, setUser] = useState("");
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const onClickBack = () => navigate(-1);
     const [items, setItems] = useState([]);
@@ -16,6 +18,14 @@ export const ItemlistPage = (props) => {
     const search = useLocation().search;
     const param = new URLSearchParams(search);
     const category = param.get('category')
+    
+    /* ↓ログインしているかどうかを判定する */
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+        setLoading(false);
+        });
+    }, []);
 
     async function getAllItems() {
         if (category === "bottoms"){
@@ -88,21 +98,29 @@ export const ItemlistPage = (props) => {
 
     return (
         <>
-        <div class="md:h-full">
-            <button onClick={onClickBack}>戻る</button>
-            <div className="App container mx-auto">
-                <div className="mt-6">
-                    <CategoryButtonList />
+        {/* ↓ログインしていない場合はログインページにリダイレクトする設定 */}
+        {!user ? (
+            <Navigate to={`/signin/`} />
+        ) : (
+            <>
+            <div class="md:h-full">
+                <button onClick={onClickBack}>戻る</button>
+                <div className="App container mx-auto">
+                    <div className="mt-6">
+                        <CategoryButtonList />
+                    </div>
+                </div>
+                <div className="App container mx-auto">
+                    <div className="mt-6">
+                        <ItemCardList
+                            items = {items}
+                        />
+                    </div>
                 </div>
             </div>
-            <div className="App container mx-auto">
-                <div className="mt-6">
-                    <ItemCardList
-                        items = {items}
-                    />
-                </div>
-            </div>
-        </div>
+            <Footer />
+            </>
+            )}
         </>
     );
 };

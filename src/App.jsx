@@ -1,15 +1,16 @@
 import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { AdditemsImagePage } from "./components/AdditemsImagePage";
+import './index.css';
 
-import { Footer } from "./components/Footer";
-import { ItemlistPage } from "./components/ItemlistPage";
 import { NomatchPage } from "./components/NomatchPage";
-import { TodayPage } from "./components/TodayPage";
 import { SignUp } from "./components/SignUp";
 import { db } from "./firebase";
 import { Mypage } from "./components/MyPage";
+import { SignIn } from "./components/SignIn";
+import { TodayPage } from "./components/TodayPage";
+import { AdditemsImagePage } from "./components/AdditemsImagePage";
+import { ItemlistPage } from "./components/ItemlistPage";
 
 export const App = () => {
   const [items, setItems] = useState([]);
@@ -24,15 +25,32 @@ export const App = () => {
   }, []);
   return (
     <div classname="App" class="md:h-full">
-      <SignUp />
-      <Mypage />
       <Routes>
-        <Route path="/" element={<TodayPage />} />
-        <Route path="/Itemlist" element={<ItemlistPage />} />
-        <Route path="/Additems" element={<AdditemsImagePage />} />
+        <Route path={`/signup/`} element={<SignUp />} />
+        <Route path={`/signin/`} element={<SignIn />} />
+        <Route path={`/`} element={<Mypage />} />
+        <Route path={`/additems/`} element={<AdditemsImagePage />} />
+        <Route path={`/itemlist`} element={<ItemlistPage />} />
         <Route path="*" element={<NomatchPage />} />
       </Routes>
-      <Footer />
+
+      {/* <Route
+        path="/Itemlist"
+        render={({ match: { url } }) => (
+          <Routes>
+            {ItemlistRoutes.map((route) => (
+              <Route
+                key={route.path}
+                exact={route.exact}
+                path={`${url}${route.path}`}
+              >
+                {route.children}
+              </Route>
+            ))}
+          </Routes>
+        )}
+      /> */}
+
     </div>
   );
 }

@@ -14,16 +14,12 @@ export const Footer = () => {
                     Today
                 </button>
                 <button class="text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
-                onClick={()=> navigate('/Additems')}>
+                onClick={()=> navigate('/additems')}>
                     Add Items
                 </button>
                 <button class="text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
-                onClick={()=> navigate('/Itemlist')}>
+                onClick={()=> navigate('/itemlist')}>
                     Itemlist
-                </button>
-                <button class="text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none"
-                onClick={()=> navigate('/Settings')}>
-                    Settings
                 </button>
             </nav>
         </div>
