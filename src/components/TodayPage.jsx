@@ -21,7 +21,7 @@ export const TodayPage = () => {
             <div>{month}月{date}日（{dayname[day]}）</div>
             {/*天気、気温　※APIで現在地の天気を取得*/}
             {/* <Weather /> */}
-            <div class="flex flex-col">
+            <div class="flex flex-col items-center">
                 <div class="w-1/3 rounded border border-slate-500 p-3 border-dotted flex justify-center items-center hover:translate-y-0.5 transform transition"
                 onClick={() => navigate('/itemlist')}>
                     <img src={topsImg} alt="topsImage"/>
