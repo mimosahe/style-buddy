@@ -9,16 +9,16 @@ import { Footer } from "./Footer";
 import { onAuthStateChanged } from "firebase/auth";
 
 export const ItemlistPage = (props) => {
-    const [user, setUser] = useState("");
+    const [user, setUser] = useState("user");
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const onClickBack = () => navigate(-1);
     const [items, setItems] = useState([]);
-    
+
     const search = useLocation().search;
     const param = new URLSearchParams(search);
     const category = param.get('category')
-    
+
     /* ↓ログインしているかどうかを判定する */
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {

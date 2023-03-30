@@ -13,14 +13,14 @@ export const AdditemsImagePage = () => {
     const [preview, setPreview] = useState();
     const [loading, setLoading] = useState(false);
     const [isUploaded, setUploaded] = useState(false);
-    const [user, setUser] = useState("");
+    const [user, setUser] = useState("user");
 
     /* ↓ログインしているかどうかを判定する */
     useEffect(() => {
-        onAuthStateChanged(auth, (currentUser) => {
+      onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
         setLoading(false);
-        });
+      });
     }, []);
 
     const categoryNameList = categoryList.map(item => item.name);
@@ -79,7 +79,7 @@ export const AdditemsImagePage = () => {
           console.log(e);
         }
     };
-    
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const { category1, category2, color, season } = event.target.elements;

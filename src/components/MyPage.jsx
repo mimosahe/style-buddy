@@ -5,7 +5,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { TodayPage } from "./TodayPage";
 
 export const Mypage = () => {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState("user");
   const [loading, setLoading] = useState(true);
 
   /* ↓ログインしているかどうかを判定する */
