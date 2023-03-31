@@ -18,7 +18,7 @@ export const TodayPage = () => {
         <>
         <div>
             {/*日付*/}
-            <div>{month}月{date}日（{dayname[day]}）</div>
+            {/* <div>{month}月{date}日（{dayname[day]}）</div> */}
             {/*天気、気温　※APIで現在地の天気を取得*/}
             {/* <Weather /> */}
             <div class="flex flex-col items-center">
