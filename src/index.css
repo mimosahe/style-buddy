@@ -10,12 +10,12 @@
         @apply m-auto w-20 h-20  text-center flex items-center bg-blue-400 text-lg text-white font-semibold rounded-full hover:bg-blue-500 hover:shadow-sm hover:translate-y-0.5 transform transition;
     }
     .active {
-        @apply flex flex-col items-center gap-1 text-indigo-500;
+        @apply flex flex-col items-center gap-1 text-indigo-500 relative;
     }
     .inactive {
-        @apply flex flex-col items-center gap-1 text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600 ;
+        @apply flex flex-col items-center gap-1 text-gray-400 relative transition duration-100 hover:text-gray-500 active:text-gray-600 ;
     }
     .linkbox {
-        @apply block absolute;
+        @apply block absolute top-0 left-0 h-full w-full ;
     }
 }
