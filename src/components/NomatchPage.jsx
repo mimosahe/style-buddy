@@ -13,7 +13,7 @@ export const NomatchPage = () => {
 
             <p class="mb-8 text-center text-gray-500 sm:text-left md:text-lg">The page you’re looking for doesn’t exist.</p>
 
-            <Link to="/" class="inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base">TOPに戻る</Link>
+            <Link to="today" class="inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base">TOPに戻る</Link>
             {/* <a href="#" class="inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base">Go home</a> */}
           </div>
           {/*  content - end  */}

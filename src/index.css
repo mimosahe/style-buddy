@@ -13,12 +13,9 @@
         @apply flex flex-col items-center gap-1 text-indigo-500;
     }
     .inactive {
-        @apply flex flex-col items-center gap-1 text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600;
+        @apply flex flex-col items-center gap-1 text-gray-400 transition duration-100 hover:text-gray-500 active:text-gray-600 ;
     }
     .linkbox {
-        @apply relative;
-    }
-    .linkbox a {
         @apply block absolute;
     }
 }

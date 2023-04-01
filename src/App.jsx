@@ -28,7 +28,7 @@ export const App = () => {
       <Routes>
         <Route path={`/signup/`} element={<SignUp />} />
         <Route path={`/signin/`} element={<SignIn />} />
-        <Route path={`/`} element={<Mypage />} />
+        <Route path={`/today`} element={<Mypage />} />
         <Route path={`/additems/`} element={<AdditemsImagePage />} />
         <Route path={`/itemlist`} element={<ItemlistPage />} />
         <Route path="*" element={<NomatchPage />} />
