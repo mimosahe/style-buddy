@@ -118,7 +118,9 @@ export const ItemlistPage = (props) => {
                     </div>
                 </div>
             </div>
+            <div class="flex justify-center">
             <Footer />
+            </div>
             </>
             )}
         </>

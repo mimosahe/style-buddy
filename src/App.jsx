@@ -34,23 +34,6 @@ export const App = () => {
         <Route path="*" element={<NomatchPage />} />
       </Routes>
 
-      {/* <Route
-        path="/Itemlist"
-        render={({ match: { url } }) => (
-          <Routes>
-            {ItemlistRoutes.map((route) => (
-              <Route
-                key={route.path}
-                exact={route.exact}
-                path={`${url}${route.path}`}
-              >
-                {route.children}
-              </Route>
-            ))}
-          </Routes>
-        )}
-      /> */}
-
     </div>
   );
 }

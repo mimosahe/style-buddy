@@ -36,7 +36,9 @@ export const TodayPage = () => {
                 </div>
             </div>
         </div>
+        <div class="flex justify-center">
         <Footer />
+        </div>
         </>
     );
 };
