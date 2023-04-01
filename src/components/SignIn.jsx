@@ -37,7 +37,7 @@ export const SignIn = () => {
     <>
       {/* ↓ログインしている場合、マイページにリダイレクトする設定 */}
       {user ? (
-        <Navigate to={`/today`} />
+        <Navigate to={`/`} />
       ) : (
         <>
           <div class="bg-white py-6 sm:py-8 lg:py-12">

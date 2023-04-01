@@ -16,7 +16,7 @@ export const Footer = () => {
             <div className={`${active === "today" ? "active" : "inactive"}`} onClick={() => setActive('today')}>
             <FontAwesomeIcon icon={faSun} />
             {/* <span>Today</span> */}
-            <a href="today">Today</a>
+            <a href="/">Today</a>
             {/* </div> */}
             </div>
 
